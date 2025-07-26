@@ -17,6 +17,8 @@ int missingNumber1 (int arr[], int n) {
     }
     return -1;
 }
+// Time: O(n^2)
+// Space: O(1)
 
 // hashing approach
 int missingNumber2 (int arr[], int n) {
@@ -34,6 +36,8 @@ int missingNumber2 (int arr[], int n) {
 
     return -1;
 }
+// Time: O(n)
+// Space: O(n)
 
 // sum approach
 int missingNumber3 (int arr[], int n) {
@@ -53,19 +57,29 @@ int missingNumber3 (int arr[], int n) {
 
     return sum2 - sum1;
 }
+// Time: O(n)
+// Space: O(1)
+// overflow in large inputs is possible in this approach thats why we use xor approach
+
 
 //xor approach
-int missingNumber4 (int arr[], int n) {
-    int xor1 = 0; // XOR of all elements from 0 to n
-    int xor2 = 0; // XOR of all elements in array
+int missingNumber5 (int arr[], int n) {
+    int xor1 = 0;
+    int xor2 = 0;
 
-    for (int i = 0; i <= n; i++) {
+    for (int i=0; i<=n; i++) {
         xor1 ^= i;
     }
 
-    for (int i = 0; i < n; i++) {
+    for (int i=0; i<n; i++) {
         xor2 ^= arr[i];
     }
 
-    return xor1 ^ xor2;
+    return xor1^xor2;
 }
+// Time: O(n)
+// Space: O(1)
+// Best balance: no extra space, no overflow
+
+// best approach is xor approach due to its best time complexity and space complexity
+
