@@ -37,3 +37,6 @@ int recursiveImplementation (vector<int> &arr, int low, int high, int target) {
 int requiredFunction (vector<int> arr, int target) {
     return recursiveImplementation (arr, 0, arr.size() - 1, target);
 }
+
+// Time complexity is O(log n) (base is 2)
+// overflow case is to use mid = low + ([high-low]/2);
