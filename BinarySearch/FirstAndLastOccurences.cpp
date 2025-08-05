@@ -64,3 +64,56 @@ pair<int, int> firstAndLastOccurence2 (vector<int> arr, int x, int n) {
 } 
 
 // time complexity is O(log n) (base 2) and space complexity is O(1)
+
+// optimal solution (if asked in binary search method) 
+// but we need to search first ovcurence and last occurence separately
+int firstOccurence (vector<int> arr, int x) {
+    int n = arr.size();
+    int high = n-1;
+    int low = 0;
+    int first = -1;
+    while (low <= high) {
+        int mid = low + ((high-low)/2);
+        if (arr[mid] == x) {
+            first = mid;
+            high = mid-1;
+        }
+        else if (arr[mid] < x) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+    return first;
+}
+
+int lastOccurence (vector<int> arr, int x) {
+    int n = arr.size();
+    int high = n-1;
+    int low = 0;
+    int last = -1;
+    while (low <= high) {
+        int mid = low + ((high-low)/2);
+        if (arr[mid] == x) {
+            last = mid; 
+            low = mid+1;
+        }
+        else if (arr[mid] < x) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+    return last;
+}
+
+pair<int, int> firstAndLastOccurence3 (vector<int> arr, int x) {
+    int last = lastOccurence (arr, x);
+    int first = firstOccurence (arr, x);
+    if (last == -1) {
+        return {-1, -1};
+    }
+    return {first, last};
+}
