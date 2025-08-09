@@ -37,5 +37,6 @@ bool rotatedSortedArray2 (vector<int> arr, int target) {
 }
 
 // in this everything is similar to roatatedSortedArray2 but the only extra condition to check is (arr[low] == arr[mid] && arr[mid] == arr[high]), thats it.
-// time complxity - O(log n) (base 2)
+// time complxity - O(log n) (base 2) [in best and average cases]
+// but in worst case like [2, 2, 2, 2, 2] where all elements are same it can be O(n)
 // space complexity - O(1)
