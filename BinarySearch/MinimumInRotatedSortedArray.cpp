@@ -2,14 +2,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int minInRotatedSortedArray (vector<int> arr) {
+int minInRotatedSortedArrayWithoutDuplicates (vector<int> arr) {
     int n = arr.size();
     int ans = INT_MAX;
     int low = 0;
     int high = n-1;
     while (low <= high) {
         int mid = low + ((high-low)/2);
-        if (arr[low] <= arr[high]) {
+        if (arr[low] < arr[high]) {
             ans = min(ans, arr[low]);
             break;
         }
@@ -37,7 +37,7 @@ int minInRotatedSortedArrayWithDuplicates (vector<int> arr) {
             high = high - 1;
             continue;
         }
-        if (arr[low] <= arr[high]) {
+        if (arr[low] < arr[high]) {
             ans = min(ans, arr[low]);
             break;
         }
@@ -54,5 +54,5 @@ int minInRotatedSortedArrayWithDuplicates (vector<int> arr) {
 }
 
 // time complexity - O(log n) (base 2) (with no/less duplicates)
-// time complexity - O(n) (with duplicates)
+// time complexity - O(n) (with many/complete duplicates)
 // space complexity - O(1)
