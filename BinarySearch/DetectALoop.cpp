@@ -33,3 +33,20 @@ bool detectALoop1 (Node* head) {
 // time complexity : O(nlogn) -> if map is used and O(n) -> if unordered map is used
 // in the map -> mpp.find and mpp[temp] that is finding and inserting operations take O(logn) thats why above O(nlogn) whereas in unordered map the same operations take O(n)
 // space complexity : O(n)
+
+// optimal approach (tortoise & hare method)
+bool detectALoop2 (Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+    while (fast != NULL && fast->next != NULL) {
+        if (slow == fast) {
+            return true;
+        }
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return false;
+}
+
+// time complexity : O(n)
+// space complexity : O(1)
