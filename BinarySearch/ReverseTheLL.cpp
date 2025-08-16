@@ -53,3 +53,19 @@ Node* reverseTheLL2 (Node* head) {
 
 // time complexity : O(n)
 // space complexity : O(1)
+
+// recursive approach
+Node* reverseTheLL3 (Node* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    Node* newHead = reverseTheLL3(head->next);
+    Node* front = head->next;
+    front->next = head;
+    head->next = NULL;
+    return newHead;
+}
+
+// time complexity : O(n)
+// space complexity : O(n)
