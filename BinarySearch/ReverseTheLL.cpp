@@ -18,7 +18,7 @@ struct Node {
 
 // iterative method
 // brute force approach (brute force in the sense, this does not manipulate the pointers of linked list but instead reverses the data)
-void reverseTheLL (Node* head) {
+void reverseTheLL1 (Node* head) {
     Node* temp = head;
     stack<int> st;
     
@@ -38,3 +38,18 @@ void reverseTheLL (Node* head) {
 // time complexity : O(2n)
 // space complexity : O(n)
 
+// optimal approach (this manipulates the pointers of the linked list)
+Node* reverseTheLL2 (Node* head) {
+    Node* temp = head;
+    Node* prev = NULL;
+    while (temp != NULL) {
+        Node* front = temp->next;
+        temp->next = prev;
+        prev = temp;
+        temp = front;
+    }
+    return prev; // here prev becomes the head at last
+}
+
+// time complexity : O(n)
+// space complexity : O(1)
