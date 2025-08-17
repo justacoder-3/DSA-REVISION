@@ -49,7 +49,7 @@ bool detectALoopSetMethod (Node* head) {
     return false;
 }
 
-// time complexity : O(n) and O(n^2) in rare worst cases
+// time complexity : O(n) and O(n^2) in rare worst cases due to bad hashing
 // explanation : Operations in unordered_set
 //          insert(x) → O(1) average (because hash table stores it directly in a bucket).
 //          find(x) → O(1) average (just check the bucket for that hash value).

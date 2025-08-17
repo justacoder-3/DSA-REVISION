@@ -18,15 +18,22 @@ struct Node {
 
 // map method
 Node* startingPoint (Node* head) {
-    map<Node*, int> mpp;
+    unordered_set<Node*> st;
 
     Node* temp = head;
     while (temp != NULL) {
-        if (mpp.find(temp) != mpp.end()) {
+        if (st.find(temp) != st.end()) {
             return temp;
         }
-        mpp[temp] = 1;
+        st.insert(temp);
         temp = temp->next;
     }
     return NULL;
 }
+
+// Time Complexity:
+//      Each find() and insert() → O(1) average.
+//      For N nodes → O(N) average time.
+//      Worst case → O(N²) if many hash collisions, but rare.
+// Space Complexity:
+//      You may store all nodes in the set → O(N).
