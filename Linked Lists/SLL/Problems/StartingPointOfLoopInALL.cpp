@@ -17,7 +17,7 @@ struct Node {
 };
 
 // map method
-Node* startingPoint (Node* head) {
+Node* startingPoint1 (Node* head) {
     unordered_set<Node*> st;
 
     Node* temp = head;
@@ -37,3 +37,28 @@ Node* startingPoint (Node* head) {
 //      Worst case → O(N²) if many hash collisions, but rare.
 // Space Complexity:
 //      You may store all nodes in the set → O(N).
+
+// optimal approach (floyd's cycle detection method)
+Node* startingPoint2 (Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+    
+    // loop detection
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        // if loop detected, find the starting point
+        if (slow == fast) {
+            fast = head;
+            while (slow != fast) {
+                slow = slow->next;
+                fast = fast->next;
+            }
+            return slow; // this is the starting point of loop. Even returning the fast gives the same answer
+        }
+    }
+    return NULL; // no loop detected
+}
+
+// time complexity : O(n)
+// space complexity : O(1)
