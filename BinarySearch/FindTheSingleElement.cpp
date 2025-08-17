@@ -21,9 +21,6 @@ int frequencyCountMethod (vector<int> arr) {
 // time complexity = O(n^2)
 // space complexity = O(1)
 
-int sortArrayB
-
-
 // optimal solution
 int findingTheSingleElements (vector<int> arr) {
     int n = arr.size();
