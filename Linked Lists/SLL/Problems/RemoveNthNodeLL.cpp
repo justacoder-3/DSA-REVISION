@@ -85,4 +85,29 @@ Node* removeNthNode2 (Node* head, int n) {
 // time complexity : O(length) becoz finally we see, at first the fast pointer travelsn till n, then the remaining, so it travely only the complete length of the array
 // space complexity : O(1)
 
+// optimal solution as above but just a dummy node is used which is a bit cleaner, even above method can be used
+Node* removeNode3 (Node* head, int n) {
+    Node* dummy = new Node(0);
+    dummy->next = head;
+
+    Node* fast = dummy;
+    Node* slow = dummy;
+
+    for (int i = 0; i<=n; i++) {
+        fast = fast->next;
+    }
+
+    while (fast != NULL) {
+        slow = slow->next;
+        fast = fast->next;
+    }
+
+    Node* delNode = slow->next;
+    slow->next = slow->next->next;
+    delete delNode;
+    return dummy->next;
+}
+
+// time complexity : same as optimal solution O(length)
+// space complexity : same as optimal solution O(1)
 
