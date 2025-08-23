@@ -64,3 +64,51 @@ Node* sortLL1 (Node* head) {
 
 // time complexity : O(n) [for count no of 0s, 1s and 2s] + O(n) [for inserting 0s, 1s and 2s] => O(2n) => O(n)
 // space complexity O(1)
+
+// optimal approach 
+Node* sortLL2 (Node* head) {
+
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    Node* head0 = new Node(-1);
+    Node* head1 = new Node(-1);
+    Node* head2 = new Node(-1);
+    Node* zero = head0;
+    Node* one = head1;
+    Node* two = head2;
+
+    Node* temp = head;
+
+    while (temp != NULL) {
+        if (temp->data == 0) {
+            zero->next = temp;
+            zero = zero->next;
+        }
+        else if (temp->data == 1) {
+            one->next = temp;
+            one = one->next;
+        }
+        else {
+            two->next = temp;
+            two = two->next;
+        }
+        temp = temp->next;
+    }
+    
+    zero->next = (head1->next) ? head1->next : head2->next ; // note that the question doesnt say all three 0, 1 and 2 is going to be there in the linked list
+    one->next = head2->next;
+    two->next = NULL;
+
+    Node* newHead = head0->next;
+
+    delete head0;
+    delete head1;
+    delete head2;
+
+    return newHead;
+}
+
+// time complexity : O(n)
+// space complexity O(1)
