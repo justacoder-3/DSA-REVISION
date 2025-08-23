@@ -70,5 +70,5 @@ Node* deleteMiddleNode2 (Node* head) {
     return head;
 }
 
-// time complexity : O(n) [becoz its a single pass, no 2nd time pass]
+// time complexity : O(n/2) [becoz its a single pass and going only on half of the elements, no 2nd time pass]
 // space complexity : O(1)
