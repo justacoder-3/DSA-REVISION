@@ -53,14 +53,22 @@ Node* deleteMiddleNode2 (Node* head) {
     Node* slow = head;
     Node* fast = head;
 
-    while (fast->next != NULL && fast != NULL) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    fast = fast->next->next;
+    while (fast != NULL && fast->next != NULL) {
         slow = slow->next;
         fast = fast->next->next;
     }
 
-    Node* delNode = slow;
+    Node* delNode = slow->next; 
+    slow->next = slow->next->next;
+    delete delNode;
 
+    return head;
 }
 
-// time complexity :
+// time complexity : O(n) [becoz its a single pass, no 2nd time pass]
 // space complexity : O(1)
