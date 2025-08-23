@@ -51,13 +51,12 @@ Node* deleteMiddleNode1 (Node* head) {
 
 Node* deleteMiddleNode2 (Node* head) {
     Node* slow = head;
-    Node* fast = head;
+    Node* fast = head->next->next;
 
     if (head == NULL || head->next == NULL) {
         return head;
     }
 
-    fast = fast->next->next;
     while (fast != NULL && fast->next != NULL) {
         slow = slow->next;
         fast = fast->next->next;
