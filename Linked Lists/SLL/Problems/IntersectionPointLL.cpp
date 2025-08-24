@@ -129,3 +129,30 @@ Node* intersectionPoint3 (Node* head1, Node* head2) {
         return collissionPoint1 (head2, head1, count1-count2);
     }
 }
+
+// full optimal approach
+Node* intersectionPoint4 (Node* head1, Node* head2) {
+    Node* t1 = head1;
+    Node* t2 = head2;
+
+    while (t1 != t2) {
+        t1 = t1->next;
+        t2 = t2->next;
+
+        if (t1 == NULL) {
+            t1 = head2;
+        }
+
+        if(t2 == NULL) {
+            t2 = head1;
+        }
+
+        if (t1 == t2) {
+            return t1;
+        }
+    }
+    return t1;
+}
+
+// time complexity : O(n1+n2) where n1 is the length of LL1 and n2 is the length of LL2
+// space complexity : O(1)
