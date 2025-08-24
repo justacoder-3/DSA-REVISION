@@ -146,13 +146,21 @@ Node* intersectionPoint4 (Node* head1, Node* head2) {
         if(t2 == NULL) {
             t2 = head1;
         }
-
-        if (t1 == t2) {
-            return t1;
-        }
     }
     return t1;
 }
 
 // time complexity : O(n1+n2) where n1 is the length of LL1 and n2 is the length of LL2
 // space complexity : O(1)
+
+// optimal approach a different style
+Node* intersectionPoint5 (Node* head1, Node* head2) {
+    Node* t1 = head1;
+    Node* t2 = head2;
+
+    while (t1 != t2) {
+        t1 = (t1 == NULL) ? head2 : t1->next;
+        t2 = (t2 == NULL) ? head1 : t2->next;
+    }
+    return t1;
+}
