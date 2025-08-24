@@ -84,3 +84,6 @@ Node* add1ToLL2 (Node* head) {
     head = reverse(head); 
     return head;
 }
+
+// optimal approach
+// recursion method will do later
