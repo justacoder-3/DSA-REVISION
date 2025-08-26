@@ -11,6 +11,7 @@ struct Node {
     }
 };
 
+// postorder - left right root
 void postorder(Node* node) {
     if (node == NULL) {
         return;
@@ -20,6 +21,7 @@ void postorder(Node* node) {
     cout << node-> data << " ";
 }
 
+// inorder - left root right
 void inorder(Node* node) {
     if (node == NULL) {
         return;
@@ -29,6 +31,7 @@ void inorder(Node* node) {
     inorder(node-> right);
 }
 
+// preorder - (root left right)
 void preorder(Node* node) {
     if( node == NULL) {
         return;
@@ -36,6 +39,25 @@ void preorder(Node* node) {
     cout << node-> data << " ";
     preorder(node-> left);
     preorder(node-> right);
+}
+// time complexity : O(n)
+// space complexity : O(height of the tree) -> O(n) [in worst case]
+
+// leetcode format
+vector<int> preorder2 (Node* root) {
+    if (root == NULL) {
+        return {};
+    }
+
+    vector<int> result;
+    result.push_back(root->data);
+
+    vector<int> left = preorder2(root->left);
+    result.insert(result.end(), left.begin(), left.end());
+
+    vector<int> right = preorder2(root->right);
+    result.insert(result.end(), right.begin(), right.end());
+
 }
 
 int main() {
