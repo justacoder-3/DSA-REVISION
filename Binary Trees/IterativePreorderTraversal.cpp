@@ -11,44 +11,32 @@ struct Node {
     }
 };
 
-vector<int> IterativePreorderTraversal(Node* root) {
+vector<int> iterativePreorder (Node* root) {
+    stack<Node*> st;
+    st.push(root);
     vector<int> ans;
+
     if (root == NULL) {
         return ans;
     }
-    stack<Node*> st;
-    st.push(root);
-    while(!st.empty()) {
-        root = st.top();
+
+    while (!st.empty()) {
+        Node* node = st.top();
         st.pop();
-        ans.push_back(root->data);
-        if(root->right != NULL) {
-            st.push(root->right);
+
+        ans.push_back(node->data);
+
+        if (node->right) {
+            st.push(node->right);
         }
-        if(root->left != NULL) {
-            st.push(root->left);
+
+        if (node->left) {
+            st.push(node->left);
         }
     }
     return ans;
 }
 
-// vector<int> IterativePreorderTraversal(Node* root) {
-//     vector<int> ans;
-//     if (root == NULL) {
-//         return ans;
-//     }
-//     stack<Node*> st;
-//     st.push(root);
-//     while (!st.empty()) {
-//         root = st.top();
-//         st.pop();
-//         ans.push_back(root->data);
-//         if (root->right != NULL) {
-//             st.push(root->right);
-//         }
-//         if (root->left != NULL) {
-//             st.push(root->left);
-//         }
-//     } 
-//     return ans;
-// }
+// time complexity : O(n)
+// space complexity : O(n) [worst case] and O(logn) [average case]
+

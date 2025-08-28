@@ -31,7 +31,7 @@ void inorder(Node* node) {
     inorder(node-> right);
 }
 
-// preorder - (root left right)
+// preorder - root left right
 void preorder(Node* node) {
     if( node == NULL) {
         return;
